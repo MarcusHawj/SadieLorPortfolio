@@ -1,0 +1,381 @@
+/* ============================================================
+   Sadie Lor — Portfolio
+   Shared stylesheet for every page.
+   Edit colors here once and the whole site updates.
+   ============================================================ */
+
+:root {
+  /* Color palette */
+  --blue:       #85B7DA;  /* main blue */
+  --blue-dark:  #2F76A8;  /* dark blue — highlight */
+  --cream:      #F5F3F1;  /* cream background */
+  --ink:        #22384A;  /* deep blue-gray for body text */
+  --white:      #FFFFFF;
+  --blue-tint:  #E3EDF5;  /* very light blue for soft fills */
+
+  /* Type */
+  --font-display: "Young Serif", Georgia, serif;
+  --font-body: "Karla", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Layout helpers ---------- */
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+main { padding: 3.5rem 0 5rem; }
+
+/* ---------- Header / navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(245, 243, 241, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--blue-tint);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.brand span { color: var(--blue-dark); }
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--blue-dark);
+  border-bottom-color: var(--blue);
+}
+
+/* current page indicator */
+.site-nav a[aria-current="page"] {
+  color: var(--blue-dark);
+  border-bottom-color: var(--blue-dark);
+}
+
+/* ---------- Page titles ---------- */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin-bottom: 0.5rem;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+}
+
+/* signature wavy underline under page titles */
+.wave {
+  display: block;
+  width: 140px;
+  height: 14px;
+  margin: 0.4rem 0 2.2rem;
+  color: var(--blue);
+}
+
+.lede {
+  font-size: 1.2rem;
+  max-width: 42rem;
+  margin-bottom: 2rem;
+}
+
+/* ---------- Hero (home page) ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--blue-tint);
+  border-bottom: 1px solid var(--blue-tint);
+}
+
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--blue-dark);
+}
+
+.hero p { max-width: 34rem; }
+
+.hero-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 999px 999px 24px 24px; /* soft arch shape */
+  border: 6px solid var(--white);
+  box-shadow: 0 12px 30px rgba(47, 118, 168, 0.18);
+}
+
+.hero-photo.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  background: var(--blue-dark);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover,
+.btn:focus-visible { background: #255E86; transform: translateY(-2px); }
+
+.btn.secondary {
+  background: transparent;
+  color: var(--blue-dark);
+  border: 2px solid var(--blue);
+  margin-left: 0.5rem;
+}
+
+.btn.secondary:hover,
+.btn.secondary:focus-visible { background: var(--blue-tint); }
+
+/* ---------- Cards (projects, highlights) ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.75rem;
+  border: 1px solid var(--blue-tint);
+  box-shadow: 0 4px 14px rgba(47, 118, 168, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(47, 118, 168, 0.12);
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.card .tag {
+  display: inline-block;
+  background: var(--blue-tint);
+  color: var(--blue-dark);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.7rem;
+  margin-bottom: 0.75rem;
+}
+
+.card a { color: var(--blue-dark); font-weight: 700; }
+
+/* ---------- Resume / experience timeline ---------- */
+.timeline { margin-top: 1rem; }
+
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  padding-bottom: 2.25rem;
+  border-left: 3px solid var(--blue);
+}
+
+.timeline-item:last-child { padding-bottom: 0.5rem; }
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--blue-dark);
+  border: 3px solid var(--cream);
+}
+
+.timeline-item h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.timeline-item .meta {
+  color: var(--blue-dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Skills pills ---------- */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.pill {
+  background: var(--white);
+  border: 2px solid var(--blue);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ---------- Section blocks ---------- */
+.section { margin-top: 3rem; }
+
+.section h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Contact ---------- */
+.contact-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.contact-list li {
+  background: var(--white);
+  border: 1px solid var(--blue-tint);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.9rem;
+  max-width: 32rem;
+}
+
+.contact-list strong {
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--blue-dark);
+}
+
+.contact-list a { color: var(--ink); font-weight: 700; text-decoration-color: var(--blue); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--blue-dark);
+  color: var(--white);
+  padding: 2.25rem 0;
+  margin-top: 2rem;
+}
+
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.site-footer a { color: var(--white); text-decoration-color: var(--blue); }
+
+/* ---------- Accessibility & motion ---------- */
+:focus-visible { outline: 3px solid var(--blue-dark); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 720px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-photo { max-width: 260px; margin: 0 auto; }
+  .btn.secondary { margin-left: 0; }
+}
